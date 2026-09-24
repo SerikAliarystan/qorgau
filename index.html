@@ -366,7 +366,7 @@ details p{padding:0 0 22px;color:var(--ink-2);max-width:44em}
 @keyframes betaIn{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
 .beta h3{font-family:var(--display);font-size:24px;line-height:1.15;margin-top:12px}
 .beta p{color:var(--ink-2);margin-top:10px;font-size:15.5px}
-.beta form{margin-top:18px}
+.beta form{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 .beta label{opacity:1;color:var(--ink)}
 .beta input{border-color:var(--line);background:var(--bg)}
 .beta .err{color:var(--danger)}
@@ -669,8 +669,11 @@ footer .src{font-size:12.5px;max-width:52em}
     <div id="betaForm">
       <span class="beta-tag">Бета-версия</span>
       <h3 id="betaTitle">Спасибо, что хотели купить!</h3>
-      <p>Это бета-версия продукта. Оставьте свой номер, и мы свяжемся с вами, когда доработаем Qorgau AI.</p>
+      <p>Это бета-версия продукта. Оставьте имя и номер, и мы свяжемся с вами, когда доработаем Qorgau AI.</p>
       <form id="betaF" novalidate>
+        <label for="b-name">Ваше имя
+          <input id="b-name" name="name" autocomplete="given-name" placeholder="Ерлан">
+        </label>
         <label for="b-phone">Ваш номер телефона
           <input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 7__ ___ __ __">
         </label>
@@ -817,7 +820,7 @@ const Counter=(function(){
     document.getElementById('betaPlan').textContent='Выбранный тариф: '+names[p];
     document.getElementById('betaForm').hidden=false; document.getElementById('betaDone').hidden=true;
     err.textContent=''; bg.hidden=false; document.body.style.overflow='hidden';
-    setTimeout(()=>document.getElementById('b-phone').focus(),50);
+    setTimeout(()=>document.getElementById('b-name').focus(),50);
   }
   function close(){bg.hidden=true; document.body.style.overflow=''; if(last) last.focus();}
   document.querySelectorAll('[data-beta]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.beta,b)));
@@ -827,13 +830,14 @@ const Counter=(function(){
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!bg.hidden) close();});
   f.addEventListener('submit',async e=>{
     e.preventDefault();
-    const phone=f.phone.value.trim();
+    const name=f.name.value.trim(), phone=f.phone.value.trim();
+    if(!name){err.textContent='Напишите, как к вам обращаться.';f.name.focus();return;}
     if(phone.replace(/\D/g,'').length<10){err.textContent='Укажите номер полностью, например +7 701 123 45 67.';f.phone.focus();return;}
     err.textContent='';
     const btn=document.getElementById('betaSubmit'); btn.disabled=true; btn.textContent='Сохраняем…';
     let saved=false;
     if(CONFIG.sheetUrl){
-      try{await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name:'',phone,who:'',plan:names[plan],lang:'',source:'beta · '+(location.hostname||'landing')})});saved=true;}catch(_){}
+      try{await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name,phone,who:'',plan:names[plan],lang:'',source:'beta · '+(location.hostname||'landing')})});saved=true;}catch(_){}
     }
     if(!saved){
       err.innerHTML='Не получилось сохранить номер на этой странице. Откройте <a href="'+CONFIG.siteUrl+'" target="_blank" rel="noopener">'+CONFIG.siteUrl.replace(/^https?:\/\//,'')+'</a> и попробуйте ещё раз.';
