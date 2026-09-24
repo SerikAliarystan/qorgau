@@ -84,7 +84,7 @@ a{color:inherit}
 .nav-links a{text-decoration:none}
 .nav-links a:hover{color:var(--ink)}
 html{scroll-behavior:smooth}
-#pricing,#order{scroll-margin-top:72px}
+#pricing{scroll-margin-top:72px}
 .nav .btn{padding:10px 16px;font-size:14.5px;border-radius:11px}
 @media (max-width:860px){.nav-links{display:none}}
 
@@ -337,13 +337,7 @@ details p{padding:0 0 22px;color:var(--ink-2);max-width:44em}
 .sg span{font-family:var(--mono);font-size:12.5px;color:var(--danger);line-height:1.4}
 @media (max-width:760px){.sigs{grid-template-columns:1fr 1fr}}
 .refund{margin-top:16px;color:var(--ink-2);font-size:14.5px}
-/* mobile sticky CTA */
-.mcta{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:none;transition:transform .25s ease}
-.mcta.off{transform:translateY(110%)}
-.mcta .btn{width:100%;background:var(--gold);color:#062522}
 @media (max-width:760px){
-  .mcta{display:block}
-  body{padding-bottom:84px}
   .brand small{display:none}
   .nav .btn{display:none}
   body{font-size:16px}
@@ -497,7 +491,7 @@ footer .src{font-size:12.5px;max-width:52em}
       <div class="stat"><b>16+ млрд ₸</b><span>потеряли казахстанцы из-за интернет-мошенничества в 2025 году</span><small>informburo.kz</small></div>
       <div class="stat"><b>≈20 000</b><span>уголовных дел о мошенничестве за 2025 год. Это рекорд</span><small>informburo.kz</small></div>
       <div class="stat"><b>6 из 10</b><span>жертв телефонных мошенников старше 55 лет</span><small>АФМ РК</small></div>
-      <div class="stat"><b>18 минут</b><span>хватило, чтобы пенсионерка из Алматы перевела 1,2 млн ₸</span><small>апрель 2024</small></div>
+      <div class="stat"><b>18 минут</b><span>хватило, чтобы пенсионерка из Алматы перевела 8 млн ₸</span><small>апрель 2024</small></div>
     </div>
   </section>
 
@@ -505,13 +499,13 @@ footer .src{font-size:12.5px;max-width:52em}
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">Реальная история · Алматы, апрель 2024</div>
-        <h2>Рая, 67 лет. 18 минут. 1 200 000 ₸.</h2>
+        <h2>Рая, 67 лет. 18 минут. 8 000 000 ₸.</h2>
       </div>
       <ol class="frames">
         <li class="frame"><span class="ft">00:00</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.2 3.8 10 7.7 7.8 9a14.2 14.2 0 0 0 7.2 7.2l1.3-2.2 3.9 1.8-.3 2.3a2.3 2.3 0 0 1-2.3 2c-7.5-.4-13.3-6.2-13.7-13.7a2.3 2.3 0 0 1 2-2.3l2.3-.3Z"/></svg><p>«Служба безопасности Kaspi»</p></li>
         <li class="frame"><span class="ft">03:00</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17.5v.01"/></svg><p>«Ваши деньги в опасности»</p></li>
         <li class="frame"><span class="ft">10:00</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2.5"/></svg><p>«Не кладите трубку. Никому ни слова»</p></li>
-        <li class="frame loss"><span class="ft">18:00</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg><p><b>−1 200 000 ₸</b></p></li>
+        <li class="frame loss"><span class="ft">18:00</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg><p><b>−8 000 000 ₸</b></p></li>
       </ol>
       <p class="frames-note"><b>Мошенники меняют номера. Сценарии повторяются.</b> Поэтому мы ловим сценарий, а не номер.</p>
     </div>
@@ -552,7 +546,7 @@ footer .src{font-size:12.5px;max-width:52em}
         </div>
       </figure>
       <div class="outcomes">
-        <div class="oc bad"><span class="ol">Без Qorgau</span><b>−1 200 000 ₸</b><span>перевод на 18-й минуте</span></div>
+        <div class="oc bad"><span class="ol">Без Qorgau</span><b>−8 000 000 ₸</b><span>перевод на 18-й минуте</span></div>
         <div class="oc good"><span class="ol">С Qorgau</span><b>0 ₸ потерь</b><span>звонок завершён на 2:15</span></div>
       </div>
     </div>
@@ -645,65 +639,6 @@ footer .src{font-size:12.5px;max-width:52em}
     </div>
   </section>
 
-  <section class="block" id="order" style="padding-top:0">
-    <div class="wrap">
-      <div class="order">
-        <div>
-          <div class="eyebrow" style="color:var(--gold)">Предзаказ</div>
-          <h2 style="margin-top:14px">Подключите защиту родителям первыми</h2>
-          <p class="sub">Оставьте заявку. Мы свяжемся в WhatsApp, поможем с установкой и пришлём ссылку на оплату через Kaspi.</p>
-          <p class="counter on-dark" data-counter hidden><i></i><span></span></p>
-          <div class="seats">
-            <div class="seats-top"><span>Мест по цене основателя</span><span>осталось <b data-left>100</b> из 100</span></div>
-            <div class="seats-bar"><i data-bar></i></div>
-          </div>
-          <div class="guarantee">
-            <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 6.5v8.2C4 22.3 9.1 28.2 16 30c6.9-1.8 12-7.7 12-15.3V6.5L16 2Z" fill="currentColor"/></svg>
-            <span><b>Вернём деньги без вопросов</b>, если в первые 30 дней Qorgau AI вам не подойдёт.</span>
-          </div>
-        </div>
-        <div>
-          <form id="orderForm" novalidate>
-            <div class="row2">
-              <label for="f-name">Ваше имя<input id="f-name" name="name" autocomplete="given-name" placeholder="Ерлан"></label>
-              <label for="f-phone">WhatsApp<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 7__ ___ __ __"></label>
-            </div>
-            <fieldset class="fieldset">
-              <legend>Кого защищаем</legend>
-              <div class="seg">
-                <input type="radio" name="who" id="w-mom" value="Маму" checked><label for="w-mom">Маму</label>
-                <input type="radio" name="who" id="w-dad" value="Папу"><label for="w-dad">Папу</label>
-                <input type="radio" name="who" id="w-both" value="Обоих родителей"><label for="w-both">Обоих</label>
-                <input type="radio" name="who" id="w-me" value="Себя"><label for="w-me">Себя</label>
-              </div>
-            </fieldset>
-            <fieldset class="fieldset">
-              <legend>Тариф</legend>
-              <div class="seg">
-                <input type="radio" name="plan" id="p-year" value="year" checked><label for="p-year">Год · 9 900 ₸</label>
-                <input type="radio" name="plan" id="p-month" value="month"><label for="p-month">Месяц · 990 ₸</label>
-              </div>
-            </fieldset>
-            <p class="err" id="err" role="alert"></p>
-            <button class="btn btn-buy" type="submit" id="submitBtn">Попробовать</button>
-            <p class="fine">Оплата через Kaspi после подтверждения. Возврат 30 дней.</p>
-          </form>
-          <div class="done" id="done" hidden>
-            <div class="done-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg></div>
-            <h3 id="doneTitle">Заявка принята!</h3>
-            <p id="doneText">Мы напишем вам в WhatsApp и поможем подключить защиту.</p>
-            <div class="msgbox" id="msg"></div>
-            <div class="actions">
-              <a class="btn btn-buy" id="waBtn" href="#" target="_blank" rel="noopener" hidden>Отправить в WhatsApp</a>
-              <a class="btn btn-ghost" id="kaspiBtn" href="#" target="_blank" rel="noopener" hidden>Оплатить через Kaspi</a>
-              <button class="btn btn-ghost" id="copyBtn" type="button">Скопировать текст</button>
-            </div>
-            <p id="contactLine" hidden></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="block" id="faq" style="padding-top:0">
     <div class="wrap">
@@ -753,7 +688,6 @@ footer .src{font-size:12.5px;max-width:52em}
   </div>
 </div>
 
-<div class="mcta" id="mcta"><a class="btn btn-buy" href="#pricing">Попробовать</a></div>
 
 <script>
 // Контакты для заявок: впишите номер WhatsApp (только цифры, например 77011234567) и ссылку на оплату Kaspi.
@@ -820,7 +754,15 @@ const CONFIG = {
     run(b.dataset.scn);
   }));
   build('fraud'); show('fraud',S.fraud.steps.length);
-  timers.push(setTimeout(()=>run('fraud'),2200));
+  // Анимация звонка запускается, только когда телефон виден на экране, и останавливается, когда его прокрутили.
+  const phoneEl=document.querySelector('.phone');
+  if('IntersectionObserver' in window&&phoneEl){
+    let visible=false;
+    new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting&&!visible){visible=true;run(cur);}
+      else if(!e.isIntersecting&&visible){visible=false;timers.forEach(clearTimeout);timers=[];}
+    }),{threshold:.4}).observe(phoneEl);
+  } else run('fraud');
 })();
 
 (function chart(){
@@ -838,14 +780,6 @@ const CONFIG = {
     c.addEventListener('mouseenter',()=>show(c)); c.addEventListener('focus',()=>show(c));
     c.addEventListener('click',()=>show(c));
     c.addEventListener('mouseleave',()=>tip.hidden=true); c.addEventListener('blur',()=>tip.hidden=true);});
-})();
-
-(function stickyCta(){
-  const bar=document.getElementById('mcta'), zones=['pricing','order'].map(id=>document.getElementById(id)).filter(Boolean);
-  if(!bar||!zones.length||!('IntersectionObserver' in window)) return;
-  const seen=new Set();
-  const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));bar.classList.toggle('off',seen.size>0);},{threshold:.1});
-  zones.forEach(z=>io.observe(z));
 })();
 
 const Counter=(function(){
@@ -907,54 +841,7 @@ const Counter=(function(){
   });
 })();
 
-(function order(){
-  const form=document.getElementById('orderForm'), err=document.getElementById('err');
-  document.querySelectorAll('[data-plan]').forEach(a=>a.addEventListener('click',()=>{const r=document.getElementById(a.dataset.plan==='month'?'p-month':'p-year'); if(r) r.checked=true;}));
-  const planName={year:'Семья · год, 9 900 ₸',month:'Семья · месяц, 990 ₸'};
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const name=form.name.value.trim(), phone=form.phone.value.trim();
-    const digits=phone.replace(/\D/g,'');
-    if(!name){err.textContent='Напишите, как к вам обращаться.';form.name.focus();return;}
-    if(digits.length<10){err.textContent='Укажите номер WhatsApp полностью, например +7 701 123 45 67.';form.phone.focus();return;}
-    err.textContent='';
-    const who=form.querySelector('input[name="who"]:checked').value;
-    const plan=form.querySelector('input[name="plan"]:checked').value;
-    const text=`Здравствуйте! Хочу подключить Qorgau AI.\nИмя: ${name}\nWhatsApp: ${phone}\nЗащищаем: ${who}\nТариф: ${planName[plan]}`;
-    const btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent='Отправляем…';
-    let saved=false;
-    if(CONFIG.sheetUrl){
-      try{
-        await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name,phone,who,plan:planName[plan],lang:'',source:location.hostname||'landing'})});
-        saved=true;
-      }catch(_){}
-    }
-    const num=Counter.inc();
-    document.getElementById('doneTitle').textContent=`Вы в списке! Семья №${num}`;
-    document.getElementById('msg').textContent=text;
-    const wa=document.getElementById('waBtn'), kaspi=document.getElementById('kaspiBtn');
-    const contact=document.getElementById('contactLine'), doneText=document.getElementById('doneText');
-    if(saved){
-      doneText.textContent='Мы напишем вам в WhatsApp и поможем подключить защиту.';
-      document.getElementById('msg').hidden=true; document.getElementById('copyBtn').hidden=true;
-    } else if(CONFIG.whatsapp){
-      doneText.textContent='Последний шаг: отправьте заявку нам в WhatsApp.';
-    } else {
-      doneText.textContent='Скопируйте текст заявки и отправьте его команде Qorgau AI.';
-    }
-    if(CONFIG.whatsapp){
-      wa.href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(text); wa.hidden=false;
-      contact.hidden=false; contact.textContent='Наш WhatsApp: +'+CONFIG.whatsapp;
-    }
-    if(CONFIG.kaspiLink){kaspi.href=CONFIG.kaspiLink; kaspi.hidden=false;}
-    form.hidden=true; document.getElementById('done').hidden=false;
-  });
-  document.getElementById('copyBtn').addEventListener('click',async e=>{
-    const box=document.getElementById('msg'), btn=e.currentTarget;
-    try{await navigator.clipboard.writeText(box.textContent);btn.textContent='Скопировано';}
-    catch(_){const r=document.createRange();r.selectNodeContents(box);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Текст выделен, скопируйте его';}
-  });
-})();
+
 </script>
 
 </body>
