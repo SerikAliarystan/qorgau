@@ -366,6 +366,24 @@ details p{padding:0 0 22px;color:var(--ink-2);max-width:44em}
 .counter i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
 .counter b{font-family:var(--display);font-variant-numeric:tabular-nums}
 .counter.on-dark{background:rgba(255,255,255,.08);border-color:transparent;color:inherit}
+/* beta modal */
+.beta-bg{position:fixed;inset:0;z-index:50;background:rgba(4,12,22,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
+.beta{position:relative;width:min(440px,100%);background:var(--surface);color:var(--ink);border-radius:24px;padding:28px 24px 24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);animation:betaIn .28s cubic-bezier(.2,.9,.25,1)}
+@keyframes betaIn{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+.beta h3{font-family:var(--display);font-size:24px;line-height:1.15;margin-top:12px}
+.beta p{color:var(--ink-2);margin-top:10px;font-size:15.5px}
+.beta form{margin-top:18px}
+.beta label{opacity:1;color:var(--ink)}
+.beta input{border-color:var(--line);background:var(--bg)}
+.beta .err{color:var(--danger)}
+.beta .btn{width:100%}
+.beta-tag{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:99px;background:var(--gold-soft);color:var(--ink)}
+.beta-plan{font-size:13px!important;text-align:center;margin-top:12px!important}
+.beta-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:12px;border:0;background:var(--surface-2);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.beta-x:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#betaDone{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+#betaDone .btn{margin-top:14px}
+@media (max-width:760px){.beta-bg{align-items:flex-end;padding:0}.beta{width:100%;border-radius:24px 24px 0 0;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
 footer{padding-block:40px 56px;border-top:1px solid var(--line);color:var(--ink-2);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer .src{font-size:12.5px;max-width:52em}
@@ -610,7 +628,7 @@ footer .src{font-size:12.5px;max-width:52em}
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Уведомления детям сразу</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Отчёт каждый месяц</li>
           </ul>
-          <a class="btn btn-buy" href="#order" data-plan="year">Защитить на год</a>
+          <button class="btn btn-buy" type="button" data-beta="year">Защитить на год</button>
         </div>
         <div class="plan">
           <h3>Семья · месяц</h3>
@@ -620,7 +638,7 @@ footer .src{font-size:12.5px;max-width:52em}
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Предупреждение во время звонка</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>До 2 родителей, уведомления детям</li>
           </ul>
-          <a class="btn btn-ghost" href="#order" data-plan="month">Выбрать месяц</a>
+          <button class="btn btn-ghost" type="button" data-beta="month">Выбрать месяц</button>
         </div>
       </div>
       <p class="refund">Вернём деньги, если в первые 30 дней не подойдёт.</p>
@@ -707,6 +725,33 @@ footer .src{font-size:12.5px;max-width:52em}
     <span class="src">Источники цифр: informburo.kz (итоги 2025 года), данные Агентства РК по финансовому мониторингу. История Раи Жаксыбековны приведена по материалам кейса хакатона.</span>
   </div>
 </footer>
+
+<div class="beta-bg" id="beta" hidden>
+  <div class="beta" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
+    <button class="beta-x" type="button" id="betaClose" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div id="betaForm">
+      <span class="beta-tag">Бета-версия</span>
+      <h3 id="betaTitle">Спасибо, что хотели купить!</h3>
+      <p>Это бета-версия продукта. Оставьте свой номер, и мы свяжемся с вами, когда доработаем Qorgau AI.</p>
+      <form id="betaF" novalidate>
+        <label for="b-phone">Ваш номер телефона
+          <input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 7__ ___ __ __">
+        </label>
+        <p class="err" id="betaErr" role="alert"></p>
+        <button class="btn btn-buy" type="submit" id="betaSubmit">Оставить номер</button>
+        <p class="beta-plan" id="betaPlan"></p>
+      </form>
+    </div>
+    <div id="betaDone" hidden>
+      <div class="done-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg></div>
+      <h3 id="betaDoneTitle">Номер сохранён</h3>
+      <p>Мы позвоним или напишем вам, как только продукт будет готов. Цена основателя за вами.</p>
+      <button class="btn btn-ghost" type="button" id="betaOk">Хорошо</button>
+    </div>
+  </div>
+</div>
 
 <div class="mcta" id="mcta"><a class="btn btn-buy" href="#pricing">Попробовать</a></div>
 
@@ -826,6 +871,40 @@ const Counter=(function(){
   }
   render(); load();
   return {inc(){n+=1;render(true);return n;}};
+})();
+
+(function beta(){
+  const bg=document.getElementById('beta'), f=document.getElementById('betaF'), err=document.getElementById('betaErr');
+  const names={year:'Семья · год, 9 900 ₸',month:'Семья · месяц, 990 ₸'};
+  let plan='year', last=null;
+  function open(p,btn){
+    plan=p; last=btn;
+    document.getElementById('betaPlan').textContent='Выбранный тариф: '+names[p];
+    document.getElementById('betaForm').hidden=false; document.getElementById('betaDone').hidden=true;
+    err.textContent=''; bg.hidden=false; document.body.style.overflow='hidden';
+    setTimeout(()=>document.getElementById('b-phone').focus(),50);
+  }
+  function close(){bg.hidden=true; document.body.style.overflow=''; if(last) last.focus();}
+  document.querySelectorAll('[data-beta]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.beta,b)));
+  document.getElementById('betaClose').addEventListener('click',close);
+  document.getElementById('betaOk').addEventListener('click',close);
+  bg.addEventListener('click',e=>{if(e.target===bg) close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!bg.hidden) close();});
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const phone=f.phone.value.trim();
+    if(phone.replace(/\D/g,'').length<10){err.textContent='Укажите номер полностью, например +7 701 123 45 67.';f.phone.focus();return;}
+    err.textContent='';
+    const btn=document.getElementById('betaSubmit'); btn.disabled=true; btn.textContent='Сохраняем…';
+    if(CONFIG.sheetUrl){
+      try{await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name:'',phone,who:'',plan:names[plan],lang:'',source:'beta · '+(location.hostname||'landing')})});}catch(_){}
+    }
+    const n=Counter.inc();
+    document.getElementById('betaDoneTitle').textContent='Номер сохранён. Вы семья №'+n;
+    document.getElementById('betaForm').hidden=true; document.getElementById('betaDone').hidden=false;
+    document.getElementById('betaOk').focus();
+    btn.disabled=false; btn.textContent='Оставить номер'; f.reset();
+  });
 })();
 
 (function order(){
