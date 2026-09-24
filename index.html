@@ -696,7 +696,8 @@ const CONFIG = {
   kaspiLink: "",  // ссылка на оплату Kaspi
   sheetUrl: "https://script.google.com/macros/s/AKfycbxbNQxD3X1Vv1M-TkdOo-GIIHZYUfhd8_ETk0OQ25wDFQZSc8xb5-NIGCSV2QpBIOgWTA/exec",   // URL веб-приложения Google Apps Script (…/exec): хранит заявки и отдаёт счётчик
   counter: 0,     // запасной счётчик, если таблица недоступна
-  seats: 100      // мест по цене основателя
+  seats: 100,     // мест по цене основателя
+  siteUrl: "https://serikaliarystan.github.io/qorgau/"  // основной адрес лендинга, где заявки сохраняются
 };
 
 (function demo(){
@@ -830,8 +831,13 @@ const Counter=(function(){
     if(phone.replace(/\D/g,'').length<10){err.textContent='Укажите номер полностью, например +7 701 123 45 67.';f.phone.focus();return;}
     err.textContent='';
     const btn=document.getElementById('betaSubmit'); btn.disabled=true; btn.textContent='Сохраняем…';
+    let saved=false;
     if(CONFIG.sheetUrl){
-      try{await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name:'',phone,who:'',plan:names[plan],lang:'',source:'beta · '+(location.hostname||'landing')})});}catch(_){}
+      try{await fetch(CONFIG.sheetUrl,{method:'POST',mode:'no-cors',body:new URLSearchParams({name:'',phone,who:'',plan:names[plan],lang:'',source:'beta · '+(location.hostname||'landing')})});saved=true;}catch(_){}
+    }
+    if(!saved){
+      err.innerHTML='Не получилось сохранить номер на этой странице. Откройте <a href="'+CONFIG.siteUrl+'" target="_blank" rel="noopener">'+CONFIG.siteUrl.replace(/^https?:\/\//,'')+'</a> и попробуйте ещё раз.';
+      btn.disabled=false; btn.textContent='Оставить номер'; return;
     }
     const n=Counter.inc();
     document.getElementById('betaDoneTitle').textContent='Номер сохранён. Вы семья №'+n;
